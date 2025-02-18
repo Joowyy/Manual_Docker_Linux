@@ -1,0 +1,61 @@
+
+MANUAL PARA INSTALAR "DOCKER" EN Linux (Ubuntu)
+Joel Sanchez Fernandez
+__________________________________________________________
+Nos vamos a apoyar en:
+
+	https://docs.docker.com/engine/install/ubuntu/
+__________________________________________________________
+	
+		INSTALACION DE DOCKER
+	
+1. Lo primero que necesitamos es actualizar nuestros paquetes con "sudo apt update". Los primeros pasos, estaran todos dentro de nuestra documentacion indicada. 
+
+2. Seguido de la actualizacion, instalaremos los paquetes que nos hagan falta, que en este caso lo haremos "sudo apt-get install ca-certificates curl".
+
+3. El tercer comando indicara donde lo vamos a instalar, usamos "sudo install -m 0755 -d /etc/apt/keyrings"
+
+4. Seguido de este, usamos el paquete curl, para indicar de donde vamos a instalar la aplicacion. "sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc"
+
+5. En este paso, necesitaremos modificar los permisos del archivo recientemente creado, para esto hacemos "sudo chmod a+r /etc/apt/keyrings/docker.asc"
+
+6. Y por ultimo, agregamos el siguiente comando ->
+
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+__________________________________________________________
+
+	    COMPROBAMOS EL USO DEL USUARIO
+
+1. Despues de la instalacion necesitamos ingresar en nuestro directorio 'root'. Que lo hacemos con "sudo su -".
+
+2. Una vez dentro necesitaremos ingresar en el repositorio que nosotros mismos le hemos indicado "cd /etc/apt/sources.list.d/".
+
+3. Hacemos un "ls" para comprobar que tenemos docker en la carpeta, y realizamos "cat docker.list" para confirmar que lo hemos guardado.
+
+4. Ahora haremos la instalacion completa de Docker en nuestro sistema con el comando "sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin".
+
+5. Vamos a cambiar el grupo del usuario para que pueda usar docker, "sudo usermod -aG docker $USER".
+
+6. Usamos "exit" las veces necesarias para salir a la terminal de nuestro directorio personal.
+
+7. Una vez en nuestro directorio, usamos "docker --version", si nos la muestra, esta instalado correctamente.
+
+__________________________________________________________
+
+		DENTRO DE DOCKER
+		
+1. Para iniciar un contener se usa "docker run hello-world" o "docker container run" o "docker create hello-world" (Pero este lo creo sin ejecutarse el contenedor), se podria ejecutar con "docker start -a".
+
+2. Para ver donde esta guardado el contenedor usamos "docker ps -a", donde nos muestra su ID, su IMAGE, cuando se creo...
+
+3. Para poder borrar un contenedor usamos "docker rm [ID del contenedor]"
+
+4. Si queremos ver nuestras imagenes descargadas en nuestro repositorio local usamos "docker images"
+
+__________________________________________________________
+
