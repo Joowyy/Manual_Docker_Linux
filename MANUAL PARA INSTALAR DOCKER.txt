@@ -76,4 +76,28 @@ Para entrar al contenedor usamos "docker start [nombreContenedor]", si el conten
 
 6. Para crear un contedor con una variable de entorno (variable global) que luego podremos usar es "docker run -it --name contenedorVariableGlobal -e USUARIO=Joel ubuntu bash".
 
+		  EJEMPLO DIDACTICO
+		  
+1. Creamos nuestro contenedor demonio con ciertos ajustes como "docker run -d --name horaLocal ubuntu bash -c 'while true; do echo $(date +"%T"); sleep 1; done'". Esto nos ejecturara el 'echo' cambiando la hora un segundo mas con el comando 'sleep'.
+
+2. Cuando ejecutamos este contenedor con "docker logs -f [nombreContenedor]" este no para y cada segundo te muestra un nuevo registro. En otra terminal podemos usar los comandos como "docker unpause [nombreContenedor]" o "docker pause [nombreContenedor]".
+
+                  OTRO EJEMPLO
+                  
+1. Ahora quiero crear otro demonio solo con la fecha, pero quiero que me guarde la informacion en un archivo de dentro del contenedor que se llama 'hora.txt'. Creamos el contenedor demonio con "docker run -d --name horaLocal2 ubuntu bash -c 'while true; do date >> hora.txt; sleep 1; done'"
+
+
 __________________________________________________________
+
+                  EJECUCIONES EN DOCKER
+                  
+1. Tenemos un comando para ver la info de un directorio del contenedor, que podemos usar "docker exec [nombreDirectorio] ls", nos muestra los archivos del contenedor
+2. Tambien podemos combinarlo con otros como "docker exec [nombreContenedor] cat [nombreArchivo]".
+
+3. Para copiar un archivo de nuestro usuario y moverlo al contenedor que queramos, usamos "docker cp [nombreArchivo] [nombreContenedor]:/".
+
+4. Con "docker top" vemos todo lo que se esta ejecutando.
+
+5. Con "docker inspect [nombreContenedor]" veremos una serie de informacion que se nos muestra de ese contenedor.
+
+
