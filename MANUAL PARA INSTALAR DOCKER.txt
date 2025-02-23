@@ -92,6 +92,7 @@ __________________________________________________________
                   EJECUCIONES EN DOCKER
                   
 1. Tenemos un comando para ver la info de un directorio del contenedor, que podemos usar "docker exec [nombreDirectorio] ls", nos muestra los archivos del contenedor
+
 2. Tambien podemos combinarlo con otros como "docker exec [nombreContenedor] cat [nombreArchivo]".
 
 3. Para copiar un archivo de nuestro usuario y moverlo al contenedor que queramos, usamos "docker cp [nombreArchivo] [nombreContenedor]:/".
