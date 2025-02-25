@@ -89,7 +89,7 @@ Para entrar al contenedor usamos "docker start [nombreContenedor]", si el conten
 
 __________________________________________________________
 
-                  EJECUCIONES EN DOCKER
+                  EJECUCIONES DE EN DOCKER
                   
 1. Tenemos un comando para ver la info de un directorio del contenedor, que podemos usar "docker exec [nombreDirectorio] ls", nos muestra los archivos del contenedor
 
@@ -101,4 +101,51 @@ __________________________________________________________
 
 5. Con "docker inspect [nombreContenedor]" veremos una serie de informacion que se nos muestra de ese contenedor.
 
+__________________________________________________________
 
+		  6. LEVANTAR SERVIDOR WEB
+
+1. Usamos el comando "docker run -d --name my-apache-app -p 8080:80 httpd:2.4". El '-d' indica ue sera demonio y '-p' indica que es publish (publico). Procedera a descargarse el servicio en linea.
+
+2. Para ver los puertos de nustro host usamos el comando "docker port my-apache-app" y para acceder a la pagina web vamos al navegador y ponemos "localhost:8080".
+
+__________________________________________________________
+
+		 7. CONTENEDOR CON CONTRASENIA
+		 
+1. Para hacer esto usamos "docker run -d --name mariadb -e MARIADB_ROOT_PASSWD=my-secret-pw mariadb:10.5" y le indicamos la contrasena de nuestro sistema.
+
+2. Para crear diferentes contenedor para poder usarlos en nuestra aplicacion con "docker run -l servicio=web -l entorno=desarrollo -l aplicacion=apache --name prueba_web ubuntu". Estariamos etiquetando nuestra aplicacion.
+
+3. Para buscar los contenedores con un filtro usamos "docker ps -a --filter="label="aplication"" o "--filter="label=entorno""
+
+
+__________________________________________________________
+
+		 8. LIMITACION DE RECURSOS
+		 
+1. Para averiguar el numero de procesadores que tiene el host usamos "nproc -all". Nos mostrara un entero.
+
+2. Creamos un contenedor limitado con un numero cierto de 'cpus'. Lo hacemos tal que "docker run -d --cpus 1 --name servidor_web httpd:2.4"
+
+3. Para saber a cuantos ciclos nos va el contedor con los procesadores dados usamos "docker inspect --format '{{.HostConfig.NanoCpus}}' servidor_web". Nos mostrara los ciclos por segundos que tiene
+
+
+__________________________________________________________
+
+		 9. CREACION DE IMAGENES
+		 
+Una imagen es como una plantilla para crear contenedores.
+El contenedor es una imagen, pero que se ha ejecutado.
+
+Podemos tener tanto imagenes privadas como publicas. Nosotros usaremos el registro publico de Docker, que se llama Docker Hub.
+
+El nombre de las imagenes tiene el siguiente formato ->
+	       > usuario/nombre:etiqueta <
+	       
+Las etiquetas pueden ser por ejemplo de MediaWiki.
+Si no usamos etiqueta, por defecto se usa la etiqueta -> 'latest'
+		
+En las etiquetas se debe mostrar su version y etiquetas para clasficar cada contenedor.
+
+1. 
