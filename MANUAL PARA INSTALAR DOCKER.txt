@@ -148,4 +148,40 @@ Si no usamos etiqueta, por defecto se usa la etiqueta -> 'latest'
 		
 En las etiquetas se debe mostrar su version y etiquetas para clasficar cada contenedor.
 
-1. 
+
+__________________________________________________________
+
+		  10. CREACION IMAGENES
+		  
+1. Para ver nuestras imagenes usamos "docker image ls".
+
+2. Usamos "docker pull [nombreImagen:etiqueta]" para bajarnos a nuestro PC alguna imagen del repositorio de Docker Hub.
+
+3. Podemos buscar imagenes con "docker search"
+
+4. Para borrar imagenes usamos el comando "docker rmi [opcion] imagen [nombreImagen]".
+
+
+__________________________________________________________
+
+		  11. ORGANIZAR CAPAS
+		  
+__________________________________________________________
+
+		  12. ALMACENAMIENTO IMAGENES
+		  
+1. Vamos a descargarnos una imagen del Hub, sera "docker pull josedom24/servidorweb:v1" y "v2", y usamos "docker image ls" para verificarlo.
+
+
+__________________________________________________________
+
+		 13. APLICACION DE LA WIKI
+		 
+  > https://www.mediawiki.org/wiki/MediaWiki-Docker/es <
+		 
+1. Vamos a instalar distintas versiones de la Wiki con "docker run -d -p 8080:80 mediawiki1 mediawiki"
+
+2. Pero luego si instalamos distintas versiones, comparte los datos existentes con resto de versiones de la imagen "docker run -d -p 8080:80 mediawiki1 mediawiki:1.40.2"
+
+
+
