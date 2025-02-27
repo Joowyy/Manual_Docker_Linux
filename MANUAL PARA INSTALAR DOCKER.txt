@@ -183,5 +183,16 @@ __________________________________________________________
 
 2. Pero luego si instalamos distintas versiones, comparte los datos existentes con resto de versiones de la imagen "docker run -d -p 8080:80 mediawiki1 mediawiki:1.40.2"
 
+__________________________________________________________
 
+		  14. MULTICONTENEDOR COMPOSE
+		  
+1. Creamos un multicontenedor con el comando "docker compose up -d" estos comandos hay que ejecutarlos donde este el archivo 'compose.yaml', si no, no funciona.
 
+2. Para ver nuestros multicontenedor utilizamos el comando "docker compose ps", para ver los multicontenedor de nuestro archivo 'compose'.
+
+3. Para eliminar un multicontenedor usamos "docker compose down -d [nombreArchivo]" dentro de la ruta con el 'compose'.
+
+__________________________________________________________
+
+		 15. WORDPRESS CON MARIADB
