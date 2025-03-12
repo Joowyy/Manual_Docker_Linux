@@ -205,3 +205,30 @@ __________________________________________________________
 3. Para guardar estos cambios de este contenedor a una imagen, usamos "docker commit --change='CMD apachectl -D FOREGROUND' [nombreContenedor] [nombreUsuario/myapache2:v1]" 
 
 4. Usamos "docker images" para comprobar que se ha creado correctamente
+
+
+	15.2 Crear a partir de un dockerFile
+	
+1. Nos metemos en la ruta descargada en anteriores pasos con docker compose. Nos metemos en la ruta del '/modulo7/dockerfile' y hacemos un "ls" para ver si tenemos nuestro archivo 'Dockerfile'. Si hacemos un "cat Dockerfile", nos mostrara lo siguiente:
+
+2. Para construir nuestra imagen, usamos el comando "docker build -t [nombreImagenNueva]"
+
+3. Luego usamos un "docker images" para comprobar si he creado correctamente
+
+
+	15.3 Pagina web estatica
+	
+1. Tenemos dos archivos, una carpeta con la aplicaciones, y el otro con el dockerFile.
+
+2. Nuestro Dockerfile debe contener {
+
+	FROM nginx:1.24
+	COPY public.html /usr/share/nginx/html
+	EXPOSE 80
+
+}
+Lo modificamos con "nano Dockerfile"
+
+3. Despues creamos la imagen con "docker build -t [nombreImagen]"
+
+4. Y por ultimo creamos nuestro contenedor con nuestro imagen propia creada con "docker run -d -p 80:80 --name [nombreContenedor] [nombreImagen]"
